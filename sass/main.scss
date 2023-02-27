@@ -5,11 +5,49 @@ body {
   font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
-.nav_ul {
-  list-style-type: none;
+//colors black, hover #06c, or #589ed3; underline #ddd // mighht be #bbb
+
+.main_nav {
+  width: 100%;
+}
+
+.nav_content {
+  margin: 0 50px;
+  height: 50px;
+  border-bottom: 2px solid #ddd;
+}
+
+.nav_container {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 0 35px;
 }
 
 .nav_item {
-  font-size: 20px;
-  color: red;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 23px;
+  color: #bbb;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.nav_item:hover {
+  color: #589ed3;
+}
+
+.nav_item.active {
+  color: #000;
+}
+
+.underline {
+  width: 50px;
+  height: 2px;
+  background: black;
+  transition: .4s ease-in-out;
+  -webkit-transition: .4s ease-in-out;
+  display: none;
 }
