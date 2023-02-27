@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.nav_ul {
+  list-style-type: none;
+}
+
+.nav_item {
+  font-size: 20px;
+  color: red;
+}
+
+/*# sourceMappingURL=main.css.map */

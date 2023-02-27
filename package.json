@@ -1,0 +1,23 @@
+{
+  "name": "developer_exercise_clyde",
+  "version": "1.0.0",
+  "description": "retail_instore_dev_exercise",
+  "main": "index.js",
+  "scripts": {
+    "watch-main": "sass --watch sass:stylesheets",
+    "compile-main": "sass sass:stylesheets"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheBueckert/Developer_Exercise_Clyde.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheBueckert/Developer_Exercise_Clyde/issues"
+  },
+  "homepage": "https://github.com/TheBueckert/Developer_Exercise_Clyde#readme",
+  "dependencies": {
+    "sass": "^1.58.3"
+  }
+}
