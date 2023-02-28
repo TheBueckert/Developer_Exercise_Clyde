@@ -11,6 +11,7 @@ const hourHand = document.querySelector('.hour');
 const digitalClock = document.querySelector('.digital_time');
 const clock = document.querySelector('.clock_container');
 const checkbox = document.getElementById("checkbox");
+const selectedCityText = document.querySelector('.selected_city_mobile');
 
 window.onload = () => {
     loadJSON((json) => {
@@ -69,18 +70,15 @@ const instantiateUnderline = () => {
 
 const instantiateMobileMenu = () => {
     const navItemsMobile = document.querySelectorAll('.nav_item_mobile');
-    const selectedCityText = document.querySelector('.selected_city_mobile');
     selectedMobile = navItemsMobile[0];
     selectedCityText.innerText = selectedMobile.innerHTML;
     navItemsMobile.forEach((a) => {
         a.addEventListener('click', () => {
             handleClick(a);
-            selectedCityText.innerText = a.innerText;
         });
         a.addEventListener("keydown", (event) => {
             if (event.keyCode === 13) {
                 handleClick(a);
-                selectedCityText.innerText = a.innerText;
             }
         });
     });
@@ -105,6 +103,7 @@ const handleClick = (selectedElement) => {
 
     calculateUnderlinePosition(selected);
     document.getElementById("checkbox").checked = false;
+    selectedCityText.innerText = selectedElement.innerText;
 
     const {cities} = citiesData;
     const city = cities.find((city) => city.label === selectedElement.innerHTML);

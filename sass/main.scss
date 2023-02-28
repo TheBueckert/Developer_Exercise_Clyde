@@ -37,8 +37,9 @@ body {
   color: #bbb;
   cursor: pointer;
   white-space: nowrap;
-  transition: font-size .4s ease-in-out;
-  -webkit-transition: font-size .4s ease-in-out;
+  //Disabling this transition fixes resizing issues;
+  /*transition: font-size .4s ease-in-out;
+  -webkit-transition: font-size .4s ease-in-out;*/
   @media screen and (max-width: 1024px) {
     font-size: 18px;
   }
