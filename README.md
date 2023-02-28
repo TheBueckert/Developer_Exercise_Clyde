@@ -20,6 +20,9 @@ parsing the local json file,
 underline, [Alvaro Trigo](https://alvarotrigo.com/blog/hamburger-menu-css/) for the css-only hamburger menu,
 and [this codepen](https://alvarotrigo.com/blog/hamburger-menu-css/) for the clock.
 
+When I wasn't sure what to do for something I just referenced the Apple website. This was the inspiration for the
+hamburger menu.
+
 In all there were a few things I wish I did differently. Some files could be trimmed down, and parts of the experience
 made smoother. Importing the local JSON file into Safari was also quite a headache. At the end of the day, this was a
 great learning experience, and I am very happy that I took it on.
