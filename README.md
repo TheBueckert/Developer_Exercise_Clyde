@@ -21,7 +21,7 @@ underline, [Alvaro Trigo](https://alvarotrigo.com/blog/hamburger-menu-css/) for 
 and [this codepen](https://alvarotrigo.com/blog/hamburger-menu-css/) for the clock.
 
 In all there were a few things I wish I did differently. Some files could be trimmed down, and parts of the experience
-made smoother. Importing the local JSON file into safari was also quite a headache. At the end of the day, this was a
+made smoother. Importing the local JSON file into Safari was also quite a headache. At the end of the day, this was a
 great learning experience, and I am very happy that I took it on.
 
 ## Other references:
