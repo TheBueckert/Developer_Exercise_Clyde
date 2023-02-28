@@ -1,10 +1,16 @@
 let citiesData;
 let selected, selectedMobile, navMargin;
+let localeOffset = localeTimeDiff.cupertino;
+
 let mainNav = document.querySelector('.main_nav');
 const navDiv = document.querySelector('.nav_content');
 const underline = document.querySelector('.underline');
-//todo run in other browsers  get the webkit transition properties
-//todo mobile views
+const secondHand = document.querySelector('.second');
+const minuteHand = document.querySelector('.minute');
+const hourHand = document.querySelector('.hour');
+const digitalClock = document.querySelector('.digital_time');
+const clock = document.querySelector('.clock_container');
+const checkbox = document.getElementById("checkbox");
 
 window.onload = () => {
     loadJSON((json) => {
@@ -14,6 +20,8 @@ window.onload = () => {
     createAndAppendElements();
     instantiateUnderline();
     instantiateMobileMenu();
+    setTime();
+    setInterval(setTime, 1000);
 }
 
 window.onresize = () => {
@@ -23,24 +31,22 @@ window.onresize = () => {
 
 const createAndAppendElements = () => {
     const {cities} = citiesData;
-    const navContainer = document.querySelector('.nav_container');
-    const mobileContainer = document.querySelector('.menu_items');
+    const desktopNavContainer = document.querySelector('.nav_container');
+    const mobileNavContainer = document.querySelector('.menu_items');
     cities.forEach((city, index) => {
-        // Desktop Nav Items
         const a = document.createElement('a');
         a.innerText = city.label;
         if (index === 0) a.classList.add('active');
-        a.classList.add('nav_item');
         a.setAttribute('tabindex', '0');
-        navContainer.appendChild(a);
+        const aMobile = a.cloneNode(true);
+
+        // Desktop Nav Items
+        a.classList.add('nav_item');
+        desktopNavContainer.appendChild(a);
 
         //Hamburger Menu Items
-        const aMobile = document.createElement('a');
-        aMobile.innerText = city.label;
         aMobile.classList.add('nav_item_mobile');
-        aMobile.setAttribute('tabindex', '0');
-        if (index === 0) aMobile.classList.add('active');
-        mobileContainer.appendChild(aMobile);
+        mobileNavContainer.appendChild(aMobile);
     });
 }
 
@@ -80,7 +86,7 @@ const instantiateMobileMenu = () => {
     });
     document.querySelector('.hamburger_lines').addEventListener('keydown', (event) => {
         if (event.keyCode === 13)
-            document.getElementById("checkbox").checked = !document.getElementById("checkbox").checked
+            checkbox.checked = !checkbox.checked;
     });
 
 }
@@ -88,44 +94,55 @@ const instantiateMobileMenu = () => {
 const handleClick = (selectedElement) => {
     const navItems = [...document.querySelectorAll('.nav_item')];
     const navItemsMobile = [...document.querySelectorAll('.nav_item_mobile')];
-    const newElementDesktop = navItems.filter((item) => item.innerText === selectedElement.innerText);
-    const newElementMobile = navItemsMobile.filter((item) => item.innerText === selectedElement.innerText);
 
     selected.classList.toggle('active');
-    selected = newElementDesktop[0];
+    selected = navItems.find((item) => item.innerText === selectedElement.innerText);
     selected.classList.toggle('active');
 
     selectedMobile.classList.toggle('active');
-    selectedMobile = newElementMobile[0];
+    selectedMobile = navItemsMobile.find((item) => item.innerText === selectedElement.innerText);
     selectedMobile.classList.toggle('active');
 
     calculateUnderlinePosition(selected);
     document.getElementById("checkbox").checked = false;
+
+    const {cities} = citiesData;
+    const city = cities.find((city) => city.label === selectedElement.innerHTML);
+    localeOffset = localeTimeDiff[city.section];
+    clock.classList.toggle('swap');
+    setTimeout(() => {
+        clock.classList.toggle('swap');
+    }, 1000);
 }
 
 const calculateNavMargin = () => {
-    let val1 = parseInt(window.getComputedStyle(mainNav).marginLeft.replace('px', ''));//todo long and also regex
-    let val2 = parseInt(window.getComputedStyle(navDiv).marginLeft.replace('px', ''));//todo long and also regex
+    let val1 = getLeftMargin(mainNav);
+    let val2 = getLeftMargin(navDiv);
     navMargin = val1 + val2;
 }
 
 
 const calculateUnderlinePosition = (focusedElement) => {
-    const {width, x} = focusedElement.getBoundingClientRect(); //TODO DOES THIS WORK IN ALL BROWSERS
+    const {width, x} = focusedElement.getBoundingClientRect();
     underline.style.width = `${width}px`;
     underline.style.marginLeft = `${x - navMargin}px`;
-    underline.style.display = 'block';
-
 }
 
+const setTime = () => {
+    const today = new Date();
+    const seconds = today.getUTCSeconds();
+    const minutes = today.getUTCMinutes();
+    let hours = today.getUTCHours() + localeOffset;
+    if (hours === 0) hours = 12;
+    if (hours > 12) hours -= 12;
 
-const loadJSON = (callback) => {
-    const xobj = new XMLHttpRequest();
-    xobj.overrideMimeType("application/json");
-    xobj.open('GET', './navigation.json', false);
-    xobj.onreadystatechange = () => {
-        if (xobj.readyState === 4 && xobj.status === 200)
-            callback(JSON.parse(xobj.responseText));
-    };
-    xobj.send(null);
+    const secondRotation = seconds * 6;
+    const minuteRotation = minutes * 6;
+    const hourRotation = hours * 30;
+
+    secondHand.style.transform = `rotate(${secondRotation}deg)`;
+    minuteHand.style.transform = `rotate(${minuteRotation}deg)`;
+    hourHand.style.transform = `rotate(${hourRotation}deg)`;
+
+    digitalClock.innerText = `${hours} : ${addZero(minutes)} : ${addZero(seconds)}`;
 }

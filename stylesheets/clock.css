@@ -1,0 +1,99 @@
+.clock_container {
+  padding: 50px;
+  width: fit-content;
+  margin: auto;
+  transition: transform 0.8s ease-in-out;
+  -webkit-transition: transform 0.8s ease-in-out;
+}
+
+.clock_container.swap {
+  transform: translateX(-150vw);
+}
+
+.clock_border {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  border-radius: 100%;
+  border: 5px solid #000;
+  background: #eee;
+  margin: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+@media screen and (max-width: 833px) {
+  .clock_border {
+    width: 25vw;
+    height: 25vw;
+  }
+}
+
+.hand {
+  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  width: 5px;
+  transform-origin: bottom;
+  transform: rotate(180deg);
+  border: 2px solid #fff;
+  opacity: 0.65;
+}
+
+.second {
+  height: 40%;
+  top: 10%;
+  background: red;
+  z-index: 5;
+}
+
+.minute {
+  height: 25%;
+  top: 25%;
+  background: black;
+  z-index: 4;
+}
+
+.hour {
+  height: 40%;
+  top: 10%;
+  background: black;
+  z-index: 3;
+}
+
+.clock_center {
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  position: absolute;
+  top: 48%;
+  left: 48%;
+  background: #000;
+  z-index: 6;
+}
+
+.digital_clock {
+  margin: auto;
+  text-align: center;
+  height: fit-content;
+  position: absolute;
+  top: 12.5%;
+  width: 100%;
+}
+
+.digital_time {
+  border: 1px solid black;
+  padding: 0 5px;
+  min-width: 10ch;
+  border-radius: 5px;
+  font-size: 15px;
+  background: #fff;
+  display: block;
+  width: fit-content;
+  margin: auto;
+}
+@media screen and (max-width: 833px) {
+  .digital_time {
+    font-size: 2vw;
+  }
+}
+
+/*# sourceMappingURL=clock.css.map */

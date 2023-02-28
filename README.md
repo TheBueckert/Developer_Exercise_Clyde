@@ -9,3 +9,5 @@ https://codepen.io/noonii/pen/MEepKE
 Hamburger menu:
 https://codepen.io/erikterwan/pen/EVzeRP
 https://alvarotrigo.com/blog/hamburger-menu-css/
+
+clock: https://codepen.io/Skin/pen/gOdMmww

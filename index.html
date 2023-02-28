@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Retail InStore Exercise</title>
     <link rel="stylesheet" href="./stylesheets/main.css" type="text/css">
+    <link rel="stylesheet" href="./stylesheets/mobile.css" type="text/css">
+    <link rel="stylesheet" href="./stylesheets/clock.css" type="text/css">
 
 </head>
 <body>
@@ -26,7 +28,19 @@
     </div>
 
 </nav>
+<div class="clock_container">
+    <div class="clock_border">
+        <div class="second hand"></div>
+        <div class="minute hand"></div>
+        <div class="hour hand"></div>
+        <div class="clock_center"></div>
+        <div class="digital_clock">
+            <span class="digital_time"></span>
+        </div>
+    </div>
+</div>
 
+<script src="utility.js" type="text/javascript"></script>
 <script src="index.js" type="module"></script>
 </body>
 </html>
