@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "watch-main": "sass --watch sass:stylesheets",
-    "compile-main": "sass sass:stylesheets"
+    "compile-main": "sass sass:stylesheets",
+    "host": "http-server"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/TheBueckert/Developer_Exercise_Clyde#readme",
   "dependencies": {
+    "http-server": "^14.1.1",
     "sass": "^1.58.3"
   }
 }
