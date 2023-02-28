@@ -1,7 +1,7 @@
 # Developer_Exercise_Clyde
 
 This is my Implementation of the Retail InStore Developer Exercise. This project contains optimizations to run best in
-safari.
+Safari.
 
 # How to Run
 
